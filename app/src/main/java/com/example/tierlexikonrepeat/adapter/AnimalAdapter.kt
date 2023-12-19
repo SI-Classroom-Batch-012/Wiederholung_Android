@@ -28,6 +28,8 @@ class AnimalAdapter(private val dataset: List<Animal>, private val viewModel: An
         var animal = dataset[position]
         holder.binding.animalImage.setImageResource(animal.image)
         holder.binding.animalTv.text = animal.name
+        //Hier setzen wir per Click auf die CardView das currentAnimal welches wir auswählen
+        //und navigieren gleichzeitig in das DetailFragment
         holder.binding.animalCv.setOnClickListener {
             viewModel.setCurrentAnimal(animal)
             val navController = holder.itemView.findNavController()

@@ -25,9 +25,12 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d("ViewModel", "${viewModel.currentAnimal.value!!.name}")
+        //Die LiveData currentAnimal wird beobachtet und sobald eine Veränderung stattfindet, werden
+        //dann die Views gesetzt
         viewModel.currentAnimal.observe(viewLifecycleOwner) {
             binding.detailImage.setImageResource(viewModel.currentAnimal.value!!.image)
             binding.detailName.text = viewModel.currentAnimal.value!!.name
+            //Einfache if Abfrage um zu bestimmen welches der Likezeichen dargestellt werden soll
             if(it.isLiked) {
                 binding.thumpsLikedImage.visibility = View.VISIBLE
                 binding.thumpsImage.visibility = View.GONE
@@ -36,6 +39,8 @@ class DetailFragment : Fragment() {
                 binding.thumpsImage.visibility = View.VISIBLE
             }
         }
+        //Die beiden OnClickListener um für beide Images zu gewährleisten, dass per Click der
+        //Status des Animals geändert wird
         binding.thumpsImage.setOnClickListener {
             viewModel.changeLikedStatus(viewModel.currentAnimal.value!!)
         }
@@ -43,6 +48,7 @@ class DetailFragment : Fragment() {
             viewModel.changeLikedStatus(viewModel.currentAnimal.value!!)
         }
 
+        //Button um zurück ins HomeFragment zu navigieren
         binding.detailBackButton.setOnClickListener {
             findNavController().navigateUp()
         }
