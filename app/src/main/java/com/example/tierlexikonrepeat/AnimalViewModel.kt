@@ -20,5 +20,6 @@ class AnimalViewModel : ViewModel() {
 
     fun setCurrentAnimal(animal: Animal) {
         _currentAnimal.value = animal
+        _currentAnimal.postValue(animal)
     }
 }

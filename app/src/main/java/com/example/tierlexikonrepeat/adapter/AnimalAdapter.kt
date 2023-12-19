@@ -2,12 +2,15 @@ package com.example.tierlexikonrepeat.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.tierlexikonrepeat.AnimalViewModel
 import com.example.tierlexikonrepeat.data.Animal
 import com.example.tierlexikonrepeat.databinding.AnimalItemBinding
 
-class AnimalAdapter(private val dataset: List<Animal>)
+
+class AnimalAdapter(private val dataset: List<Animal>, private val viewModel: AnimalViewModel)
     : RecyclerView.Adapter<AnimalAdapter.ItemViewHolder>(){
 
     inner class ItemViewHolder(val binding: AnimalItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -25,5 +28,9 @@ class AnimalAdapter(private val dataset: List<Animal>)
         var animal = dataset[position]
         holder.binding.animalImage.setImageResource(animal.image)
         holder.binding.animalTv.text = animal.name
+        holder.binding.animalCv.setOnClickListener {
+            viewModel.setCurrentAnimal(animal)
+            holder.itemView.findNavController()
+        }
     }
 }
