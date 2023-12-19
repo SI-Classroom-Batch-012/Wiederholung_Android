@@ -2,10 +2,10 @@ package com.example.tierlexikonrepeat.data
 
 import com.example.tierlexikonrepeat.R
 
-class Datasource {
+class Repository {
 
-    fun getAnimals(): MutableList<Animal> {
-        return mutableListOf(
+    var getAnimals: MutableList<Animal> =
+        mutableListOf(
             Animal("Schneeleopard", R.drawable.leopard),
             Animal("Fuchs", R.drawable.fox),
             Animal("Luchs", R.drawable.luchs),
@@ -15,5 +15,4 @@ class Datasource {
             Animal("Eichhörnchen", R.drawable.eichhoernchen),
             Animal("Nashorn", R.drawable.nashorn)
         )
-    }
 }
