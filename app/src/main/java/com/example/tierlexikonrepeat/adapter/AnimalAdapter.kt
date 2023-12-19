@@ -1,5 +1,6 @@
 package com.example.tierlexikonrepeat.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tierlexikonrepeat.AnimalViewModel
 import com.example.tierlexikonrepeat.data.Animal
 import com.example.tierlexikonrepeat.databinding.AnimalItemBinding
+import com.example.tierlexikonrepeat.ui.HomeFragmentDirections
 
 
 class AnimalAdapter(private val dataset: List<Animal>, private val viewModel: AnimalViewModel)
@@ -29,8 +31,9 @@ class AnimalAdapter(private val dataset: List<Animal>, private val viewModel: An
         holder.binding.animalImage.setImageResource(animal.image)
         holder.binding.animalTv.text = animal.name
         holder.binding.animalCv.setOnClickListener {
+            Log.d("ViewModel", "${animal.isLiked}")
             viewModel.setCurrentAnimal(animal)
-            holder.itemView.findNavController()
+            holder.itemView.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment())
         }
     }
 }

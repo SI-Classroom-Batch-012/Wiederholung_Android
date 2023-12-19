@@ -6,13 +6,13 @@ class Repository {
 
     var getAnimals: MutableList<Animal> =
         mutableListOf(
-            Animal("Schneeleopard", R.drawable.leopard),
-            Animal("Fuchs", R.drawable.fox),
-            Animal("Luchs", R.drawable.luchs),
-            Animal("Panda", R.drawable.panda),
-            Animal("Braunbär", R.drawable.braunbaer),
-            Animal("Tiger", R.drawable.tiger),
-            Animal("Eichhörnchen", R.drawable.eichhoernchen),
-            Animal("Nashorn", R.drawable.nashorn)
+            Animal("Schneeleopard", R.drawable.leopard, false),
+            Animal("Fuchs", R.drawable.fox, false),
+            Animal("Luchs", R.drawable.luchs, false),
+            Animal("Panda", R.drawable.panda, false),
+            Animal("Braunbär", R.drawable.braunbaer, false),
+            Animal("Tiger", R.drawable.tiger, false),
+            Animal("Eichhörnchen", R.drawable.eichhoernchen, false),
+            Animal("Nashorn", R.drawable.nashorn, false)
         )
 }

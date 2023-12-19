@@ -19,7 +19,10 @@ class AnimalViewModel : ViewModel() {
         get() = _currentAnimal
 
     fun setCurrentAnimal(animal: Animal) {
-        _currentAnimal.value = animal
+        _currentAnimal.postValue(animal)
+    }
+    fun changeLikedStatus(animal: Animal) {
+        animal.isLiked = !animal.isLiked
         _currentAnimal.postValue(animal)
     }
 }

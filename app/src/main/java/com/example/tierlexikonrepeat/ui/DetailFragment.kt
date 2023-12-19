@@ -1,6 +1,7 @@
 package com.example.tierlexikonrepeat.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.currentAnimal.observe(viewLifecycleOwner) {
+            Log.d("ViewModel", "${it.isLiked}")
             binding.detailImage.setImageResource(viewModel.currentAnimal.value!!.image)
             binding.detailName.text = viewModel.currentAnimal.value!!.name
             if(it.isLiked) {
@@ -34,7 +36,12 @@ class DetailFragment : Fragment() {
                 binding.thumpsImage.visibility = View.VISIBLE
             }
         }
-
+        binding.thumpsImage.setOnClickListener {
+            viewModel.changeLikedStatus(viewModel.currentAnimal.value!!)
+        }
+        binding.thumpsLikedImage.setOnClickListener {
+            viewModel.changeLikedStatus(viewModel.currentAnimal.value!!)
+        }
 
 
         binding.detailBackButton.setOnClickListener {

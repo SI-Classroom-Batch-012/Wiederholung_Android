@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val repository = Repository()
-        var animals = repository.getAnimals
+        var animals = viewModel.animalList.value!!
         binding.animalRV.adapter = AnimalAdapter(animals, viewModel)
     }
 
