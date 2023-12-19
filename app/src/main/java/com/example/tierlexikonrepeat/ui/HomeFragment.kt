@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.example.tierlexikonrepeat.AnimalViewModel
 import com.example.tierlexikonrepeat.adapter.AnimalAdapter
 import com.example.tierlexikonrepeat.data.Repository
 import com.example.tierlexikonrepeat.databinding.FragmentHomeBinding
@@ -12,7 +14,7 @@ import com.example.tierlexikonrepeat.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
-
+    private val viewModel : AnimalViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +26,8 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val repository = Repository()
-        var animals = repository.getAnimals
-        binding.animalRV.adapter = AnimalAdapter(animals)
+        var animals = viewModel.animalList.value!!
+        binding.animalRV.adapter = AnimalAdapter(animals, viewModel)
     }
 
 }
