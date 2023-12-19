@@ -11,7 +11,8 @@ class AnimalViewModel : ViewModel() {
     private val repository : Repository = Repository()
     private val animals = repository.getAnimals
 
-    //Live Data um die Tierliste aus dem Repository zu verwalten. Wird aus dem Repository herausgeladen.
+    //Live Data um die Tierliste aus dem Repository zu verwalten. Wird aus dem Repository
+    //herausgeladen.
     private val _animalList : MutableLiveData<List<Animal>> = MutableLiveData(animals)
     val animalList: LiveData<List<Animal>>
         get() = _animalList
@@ -29,7 +30,7 @@ class AnimalViewModel : ViewModel() {
 
     //Funktion um den Status eines Tieres zu ändern, ob dieses geliket ist oder nicht.
     //Danach wird _currentAnimal durch die postValue Funktion überschrieben und der Observer im
-    //DetailFragment getriggert
+    //DetailFragment dadurch getriggert
     fun changeLikedStatus(animal: Animal) {
         animal.isLiked = !animal.isLiked
         Log.d("ViewModel", "${animal.isLiked}")
